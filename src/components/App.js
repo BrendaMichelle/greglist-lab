@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import ListingsContainer from "./ListingsContainer";
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState("")
+
+  function handleSearchQuery(query) {
+    setSearchQuery(query)
+  }
+
   return (
     <div className="app">
-      <Header />
-      <ListingsContainer />
+      <Header onSubmit={handleSearchQuery} />
+      <ListingsContainer searchQuery={searchQuery} />
     </div>
   );
 }
